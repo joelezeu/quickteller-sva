@@ -15,6 +15,10 @@ public class BillPaymentAdvise {
     private String customerEmail;
     private String amount;
     private String requestReference;
+    private String transactionRef;
+    private String responseCode;
+    private String responseMessage;
+    private String responseCodeGrouping;
     private List<ErrorCode> errors;
     private ErrorCode error;
 
@@ -66,12 +70,44 @@ public class BillPaymentAdvise {
         this.amount = amount;
     }
 
+    public String getResponseCode() {
+        return responseCode;
+    }
+
+    public void setResponseCode(String responseCode) {
+        this.responseCode = responseCode;
+    }
+
+    public String getResponseMessage() {
+        return responseMessage;
+    }
+
+    public void setResponseMessage(String responseMessage) {
+        this.responseMessage = responseMessage;
+    }
+
+    public String getResponseCodeGrouping() {
+        return responseCodeGrouping;
+    }
+
+    public void setResponseCodeGrouping(String responseCodeGrouping) {
+        this.responseCodeGrouping = responseCodeGrouping;
+    }
+
     public String getRequestReference() {
         return requestReference;
     }
 
     public void setRequestReference(String requestReference) {
         this.requestReference = requestReference;
+    }
+
+    public String getTransactionRef() {
+        return transactionRef;
+    }
+
+    public void setTransactionRef(String transactionRef) {
+        this.transactionRef = transactionRef;
     }
 
     public List<ErrorCode> getErrors() {

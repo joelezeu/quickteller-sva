@@ -80,31 +80,9 @@ public class HttpUtils {
         HttpResponse serviceResponse = client.execute(request);
 
         log.log(Level.INFO, "" + serviceResponse.getStatusLine().getStatusCode());
+        String resp = EntityUtils.toString(serviceResponse.getEntity());
+        log.log(Level.INFO, resp);
+        return resp;
 
-        return EntityUtils.toString(serviceResponse.getEntity());
-
-    }
-//
-//    public static void main(String[] args) {
-//        try {
-//            System.out.println(new HttpUtils().getClient("https://sandbox.interswitchng.com/api/v2/quickteller/billers", "", "", "3ARP0001"));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    public static void main(String[] args) {
-        try {
-            System.out.println(new HttpUtils().postClient("https://sandbox.interswitchng.com/api/v2/quickteller/customers/validations", "{\n" +
-                    "  \"customers\": [\n" +
-                    "    {\n" +
-                    "      \"customerId\": \"0434556574\",\n" +
-                    "      \"paymentCode\": \"13701\"\n" +
-                    "    }\n" +
-                    "  ]\n" +
-                    "} \n", "", "", "3ARP0001"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
