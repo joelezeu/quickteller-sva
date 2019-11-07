@@ -40,7 +40,7 @@ public class QuickTellerSVATest {
         String terminalId = "3DMO0001";
         QuickTellerSVA quickTellerSVA = new QuickTellerSVAImpl(clientId,secret, terminalId);
         BillPaymentAdvise billPaymentAdvise = new BillPaymentAdvise();
-        billPaymentAdvise.setAmount("72900");
+        billPaymentAdvise.setAmount("1460000");
         billPaymentAdvise.setCustomerEmail("joelezeu@gmail.com");
         billPaymentAdvise.setCustomerMobile("2348138249630");
         billPaymentAdvise.setCustomerId("0000000001");
@@ -48,5 +48,16 @@ public class QuickTellerSVATest {
         billPaymentAdvise.setRequestReference("1453"+System.currentTimeMillis());
 
         Assert.assertNotNull(quickTellerSVA.paymentAdvise(billPaymentAdvise));
+    }
+
+    @Test
+    public void assertThatPaymentStatusIsNotNull() throws Exception{
+         String clientId = "IKIAE4669CD887A0AECF3434EBD829617582B4267FAC";
+         String secret = "0n8A31zauWbDHGIijRKbUWij/1YFYNwjSbGI/y4hePU=";
+         String terminalId = "3DMO0001";
+        QuickTellerSVA quickTellerSVA = new QuickTellerSVAImpl(clientId,secret, terminalId);
+
+        String reference = "14531573125719751";
+        Assert.assertEquals("200", quickTellerSVA.billPaymentStatus(reference).getResponseCode());
     }
 }

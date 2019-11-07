@@ -11,7 +11,9 @@ public class ErrorCode {
     public ErrorCode(){
 
     }
-
+    public ErrorCode(String message) {
+        this.message = message;
+    }
 
     public ErrorCode(String code, String message, String responseCodeGrouping) {
         this.code = code;
