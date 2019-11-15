@@ -56,6 +56,7 @@ public class HttpUtils {
     }
 
     public String getClient(String url, String quicktellerClientId, String quicktellerClientSecret, String terminalId) throws Exception {
+        log.log(Level.INFO, url);
 
         Utils utils = new Utils();
         long timestamp = utils.getCurrentTime();
@@ -70,7 +71,6 @@ public class HttpUtils {
         // add request header
         request.setHeader("Content-Type", "application/json");
         request.setHeader("Authorization", "InterswitchAuth " + Base64.encodeBase64String(quicktellerClientId.getBytes()));
-
         request.setHeader("Timestamp", "" + timestamp);
         request.setHeader("Nonce", nonce);
         request.setHeader("SignatureMethod", signatureMethod);

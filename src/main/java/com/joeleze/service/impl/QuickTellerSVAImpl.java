@@ -32,7 +32,7 @@ public class QuickTellerSVAImpl implements QuickTellerSVA {
 
     public BillPaymentAdvise paymentAdvise(BillPaymentAdvise billPaymentAdvise) throws Exception {
         billPaymentAdvise.setTerminalId(terminalId);
-        String response = new HttpUtils().postClient(ConstantUtils.PAYMENT_ADVISE, billPaymentAdvise, quicktellerClientId, quicktellerClientId, terminalId);
+        String response = new HttpUtils().postClient(ConstantUtils.PAYMENT_ADVISE, billPaymentAdvise, quicktellerClientId, quicktellerClientSecret, terminalId);
         if(response!= null){
             return objectMapper.readValue(response, BillPaymentAdvise.class);
         }
@@ -41,7 +41,7 @@ public class QuickTellerSVAImpl implements QuickTellerSVA {
 
 
     public BillPaymentStatus billPaymentStatus(String reference) throws Exception{
-        String response = new HttpUtils().getClient(ConstantUtils.QUERY_TRANSACTION+reference, quicktellerClientId, quicktellerClientId,terminalId);
+        String response = new HttpUtils().getClient(ConstantUtils.QUERY_TRANSACTION+reference, quicktellerClientId, quicktellerClientSecret,terminalId);
         if(response!= null){
             return objectMapper.readValue(response, BillPaymentStatus.class);
         }

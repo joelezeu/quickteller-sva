@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BillPaymentStatus {
-    private Recharge recharge;
+    private Recharge billPayment;
     private String amount;
     private String currencyCode;
     private String customer;
@@ -154,12 +154,12 @@ public class BillPaymentStatus {
         this.responseCode = responseCode;
     }
 
-    public Recharge getRecharge() {
-        return recharge;
+    public Recharge getBillPayment() {
+        return billPayment;
     }
 
-    public void setRecharge(Recharge recharge) {
-        this.recharge = recharge;
+    public void setBillPayment(Recharge billPayment) {
+        this.billPayment = billPayment;
     }
 
     public List<ErrorCode> getErrors() {

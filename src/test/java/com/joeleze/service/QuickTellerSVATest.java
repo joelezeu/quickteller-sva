@@ -12,6 +12,8 @@ import java.util.List;
 
 public class QuickTellerSVATest {
 
+    private String reference = "1453"+System.currentTimeMillis();
+
     @Test
     public void assertThatQuickTellerIsNotNull() throws Exception{
         String clientId = "IKIAE4669CD887A0AECF3434EBD829617582B4267FAC";
@@ -45,7 +47,7 @@ public class QuickTellerSVATest {
         billPaymentAdvise.setCustomerMobile("2348138249630");
         billPaymentAdvise.setCustomerId("0000000001");
         billPaymentAdvise.setPaymentCode("10401");
-        billPaymentAdvise.setRequestReference("1453"+System.currentTimeMillis());
+        billPaymentAdvise.setRequestReference(reference);
 
         Assert.assertNotNull(quickTellerSVA.paymentAdvise(billPaymentAdvise));
     }
@@ -58,6 +60,6 @@ public class QuickTellerSVATest {
         QuickTellerSVA quickTellerSVA = new QuickTellerSVAImpl(clientId,secret, terminalId);
 
         String reference = "14531573125719751";
-        Assert.assertEquals("200", quickTellerSVA.billPaymentStatus(reference).getResponseCode());
+        Assert.assertEquals("90000", quickTellerSVA.billPaymentStatus(reference).getResponseCode());
     }
 }
