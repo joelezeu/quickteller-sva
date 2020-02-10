@@ -3,6 +3,7 @@ package com.joeleze.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.joeleze.domain.BillPaymentAdvise;
 import com.joeleze.domain.BillPaymentStatus;
+import com.joeleze.domain.BouquetsListItems;
 import com.joeleze.domain.CustomerValidation;
 import com.joeleze.service.QuickTellerSVA;
 import com.joeleze.utils.ConstantUtils;
@@ -16,7 +17,7 @@ public class QuickTellerSVAImpl implements QuickTellerSVA {
     private String quicktellerClientSecret;
     private String terminalId;
 
-    public QuickTellerSVAImpl(String quicktellerClientId, String quicktellerClientSecret,String terminalId){
+    public QuickTellerSVAImpl(String quicktellerClientId, String quicktellerClientSecret, String terminalId) {
         this.quicktellerClientId = quicktellerClientId;
         this.quicktellerClientSecret = quicktellerClientSecret;
         this.terminalId = terminalId;
@@ -24,7 +25,7 @@ public class QuickTellerSVAImpl implements QuickTellerSVA {
 
     public CustomerValidation customerValidation(CustomerValidation customerValidationRequest) throws Exception {
         String response = new HttpUtils().postClient(ConstantUtils.CUSTOMER_VALIDATION_URL, customerValidationRequest, quicktellerClientId, quicktellerClientSecret, terminalId);
-        if(response!= null){
+        if (response != null) {
             return objectMapper.readValue(response, CustomerValidation.class);
         }
         return null;
@@ -33,17 +34,25 @@ public class QuickTellerSVAImpl implements QuickTellerSVA {
     public BillPaymentAdvise paymentAdvise(BillPaymentAdvise billPaymentAdvise) throws Exception {
         billPaymentAdvise.setTerminalId(terminalId);
         String response = new HttpUtils().postClient(ConstantUtils.PAYMENT_ADVISE, billPaymentAdvise, quicktellerClientId, quicktellerClientSecret, terminalId);
-        if(response!= null){
+        if (response != null) {
             return objectMapper.readValue(response, BillPaymentAdvise.class);
         }
         return null;
     }
 
 
-    public BillPaymentStatus billPaymentStatus(String reference) throws Exception{
-        String response = new HttpUtils().getClient(ConstantUtils.QUERY_TRANSACTION+reference, quicktellerClientId, quicktellerClientSecret,terminalId);
-        if(response!= null){
+    public BillPaymentStatus billPaymentStatus(String reference) throws Exception {
+        String response = new HttpUtils().getClient(ConstantUtils.QUERY_TRANSACTION + reference, quicktellerClientId, quicktellerClientSecret, terminalId);
+        if (response != null) {
             return objectMapper.readValue(response, BillPaymentStatus.class);
+        }
+        return null;
+    }
+
+    public BouquetsListItems getBouquet() throws Exception {
+        String response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS, quicktellerClientId, quicktellerClientSecret, terminalId);
+        if (response != null) {
+            return objectMapper.readValue(response, BouquetsListItems.class);
         }
         return null;
     }
