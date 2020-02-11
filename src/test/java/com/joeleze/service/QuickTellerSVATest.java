@@ -66,10 +66,11 @@ public class QuickTellerSVATest {
 
     @Test
     public void assertThatPaymentItemsWorks() throws Exception {
-        String clientId = "IKIA648C2081347401A269089E4DE1A5BA59B2731410";
-        String secret = "6hozIRszPDvG91ZwcqaQmf7agVJb52oll3H/PZ3N+j8=";
-        String terminalId = "3FTH0001";
+        String clientId = "" +
+                "";
+        String secret = "";
+        String terminalId = "";
         QuickTellerSVA quickTellerSVA = new QuickTellerSVAImpl(clientId, secret, terminalId);
-        Assert.assertNotNull(quickTellerSVA.getBouquet());
+        Assert.assertNotNull(quickTellerSVA.getBouquet("DSTV"));
     }
 }
