@@ -64,7 +64,7 @@ public class QuickTellerSVATest {
         Assert.assertEquals("90000", quickTellerSVA.billPaymentStatus(reference).getResponseCode());
     }
 
-    @Test
+    //@Test
     public void assertThatPaymentItemsWorks() throws Exception {
         String clientId = "" +
                 "";

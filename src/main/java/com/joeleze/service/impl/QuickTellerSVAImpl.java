@@ -50,9 +50,17 @@ public class QuickTellerSVAImpl implements QuickTellerSVA {
     }
 
     public BouquetsListItems getBouquet(String alias) throws Exception {
-        String response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_GOTV, quicktellerClientId, quicktellerClientSecret, terminalId);
-        if (alias.equals(ConstantUtils.PAYMENT_ITEMS_ALIAS)) {
+        String response = null;
+        if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_GOTV_)) {
+            response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_GOTV, quicktellerClientId, quicktellerClientSecret, terminalId);
+        } else if (alias.trim().equals(ConstantUtils.PAYMENT_ITEMS_ALIAS)) {
             response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS, quicktellerClientId, quicktellerClientSecret, terminalId);
+        }
+        if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_STARTIMES)) {
+            response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_STARTTIME, quicktellerClientId, quicktellerClientSecret, terminalId);
+        }
+        if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_IROKO)) {
+            response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_URL_IROKO, quicktellerClientId, quicktellerClientSecret, terminalId);
         }
         if (response != null) {
             return objectMapper.readValue(response, BouquetsListItems.class);
