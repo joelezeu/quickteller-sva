@@ -13,4 +13,5 @@ public interface QuickTellerSVA {
     BillPaymentStatus billPaymentStatus(String reference) throws Exception;
 
     BouquetsListItems getBouquet(String alias) throws Exception;
+    BouquetsListItems getAirtime(String alias) throws Exception;
 }

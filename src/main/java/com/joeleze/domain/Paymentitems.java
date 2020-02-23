@@ -7,6 +7,7 @@ public class Paymentitems {
     private String categoryid;
     private String billerid;
     private String paymentitemname;
+    private String paymentCode;
     private String amount;
 
     public String getCategoryid() {
@@ -31,6 +32,14 @@ public class Paymentitems {
 
     public void setPaymentitemname(String paymentitemname) {
         this.paymentitemname = paymentitemname;
+    }
+
+    public void setPaymentCode(String paymentCode) {
+        this.paymentCode = paymentCode;
+    }
+
+    public String getPaymentCode() {
+        return paymentCode;
     }
 
     public String getAmount() {
