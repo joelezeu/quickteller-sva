@@ -86,4 +86,24 @@ public class QuickTellerSVAImpl implements QuickTellerSVA {
         }
         return null;
     }
+
+    public BouquetsListItems getDataPlans(String alias) throws Exception {
+        String response = null;
+        if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_MTN)) {
+            response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_URL_MTN_DATA, quicktellerClientId, quicktellerClientSecret, terminalId);
+        } else if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_AIRTEL_)) {
+            response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_URL_AIRTEL_DATA, quicktellerClientId, quicktellerClientSecret, terminalId);
+        }
+        if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_GLO)) {
+            response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_URL_GLO_DATA, quicktellerClientId, quicktellerClientSecret, terminalId);
+        }
+        if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_9Mobile)) {
+            response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_URL_9Mobile_DATA, quicktellerClientId, quicktellerClientSecret, terminalId);
+        }
+        if (response != null) {
+            return objectMapper.readValue(response, BouquetsListItems.class);
+        }
+
+        return null;
+    }
 }

@@ -23,6 +23,12 @@ public class ConstantUtils {
     public static final String PAYMENT_ITEMS_URL_9Mobile = BASE_URL + "/api/v2/quickteller/billers/908/paymentitems";
 
 
+    public static final String PAYMENT_ITEMS_URL_MTN_DATA = BASE_URL + "/api/v2/quickteller/billers/348/paymentitems";
+    public static final String PAYMENT_ITEMS_URL_AIRTEL_DATA  = BASE_URL + "/api/v2/quickteller/billers/2774/paymentitems";
+    public static final String PAYMENT_ITEMS_URL_GLO_DATA  = BASE_URL + "/api/v2/quickteller/billers/3070/paymentitems";
+    public static final String PAYMENT_ITEMS_URL_9Mobile_DATA  = BASE_URL + "/api/v2/quickteller/billers/205/paymentitems";
+
+
     public static final String PAYMENT_ITEMS_MTN = "mtn";
     public static final String PAYMENT_ITEMS_AIRTEL_ = "airtel";
     public static final String PAYMENT_ITEMS_GLO = "glo";
