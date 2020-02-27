@@ -72,7 +72,7 @@ public class QuickTellerSVAImpl implements QuickTellerSVA {
         String response = null;
         if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_MTN)) {
             response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_URL_MTN, quicktellerClientId, quicktellerClientSecret, terminalId);
-        } else if (alias.trim().equals(ConstantUtils.PAYMENT_ITEMS_AIRTEL_)) {
+        } else if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_AIRTEL_)) {
             response = new HttpUtils().getClient(ConstantUtils.PAYMENT_ITEMS_URL_AIRTEL, quicktellerClientId, quicktellerClientSecret, terminalId);
         }
         if (alias.trim().equalsIgnoreCase(ConstantUtils.PAYMENT_ITEMS_GLO)) {
